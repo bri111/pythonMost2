@@ -2,7 +2,7 @@ import sys  # Add this line to import the sys module
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QSlider, QComboBox, QTextEdit
 from PySide6.QtCore import Qt
 
-# test
+# test smiley face
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
