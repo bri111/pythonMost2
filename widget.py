@@ -1,4 +1,4 @@
-import sys
+import sys  # Add this line to import the sys module
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QSlider, QComboBox, QTextEdit
 from PySide6.QtCore import Qt
 
@@ -8,6 +8,53 @@ class MainWindow(QWidget):
 
         self.setWindowTitle("Toolbar Alignment")
         self.setGeometry(100, 100, 800, 600)
+
+        # Apply dark background and widget styles
+        self.setStyleSheet("""
+        QWidget {
+            background-color: #2E2E2E; /* Dark grey */
+            color: white; /* White text */
+        }
+        QLabel {
+            color: white; /* Label text color */
+        }
+        QLineEdit {
+            background-color: #3E3E3E; /* Slightly lighter grey */
+            color: white;
+            border: 1px solid #5E5E5E;
+            padding: 5px;
+        }
+        QPushButton {
+            background-color: #5A5A5A; /* Button background */
+            color: white;
+            border: 1px solid #3E3E3E;
+            padding: 5px;
+        }
+        QPushButton:hover {
+            background-color: #777777; /* Lighter grey when hovering */
+        }
+        QComboBox {
+            background-color: #3E3E3E;
+            color: white;
+            border: 1px solid #5E5E5E;
+            padding: 5px;
+        }
+        QTextEdit {
+            background-color: #3E3E3E;
+            color: white;
+            border: 1px solid #5E5E5E;
+        }
+        QSlider::groove:horizontal {
+            background: #5A5A5A; /* Slider groove background */
+            height: 10px;
+        }
+        QSlider::handle:horizontal {
+            background: #777777; /* Slider handle */
+            width: 15px;
+            margin: -5px 0; /* Align handle with groove */
+        }
+    """)
+
 
         # Main Layout
         main_layout = QVBoxLayout()
@@ -49,10 +96,9 @@ class MainWindow(QWidget):
 
         # Buttons
         log_review_btn = QPushButton("Log Review")
-        log_review_btn.clicked.connect(self.get_data)  # Connect button click to function
+        log_review_btn.clicked.connect(self.get_data)
         toolbar_layout.addWidget(log_review_btn)
 
-        # Add other buttons (if needed)
         log_entry_btn = QPushButton("Log Entry")
         log_entry_btn.clicked.connect(lambda: self.data_display.append("Log Entry clicked!"))
         toolbar_layout.addWidget(log_entry_btn)
@@ -82,33 +128,26 @@ class MainWindow(QWidget):
 
         # Add a text area to display the retrieved data
         self.data_display = QTextEdit()
-        self.data_display.setReadOnly(True)  # Make it read-only
+        self.data_display.setReadOnly(True)
         main_layout.addWidget(self.data_display)
 
         # Set the main layout
         self.setLayout(main_layout)
 
     def get_data(self):
-        # Retrieve data from inputs
         utc_value = self.utc_input.text()
         moc_value = self.moc_input.text()
         met_value = self.met_input.text()
         slt_value = self.slt_input.text()
         mjd_value = self.mjd_input.text()
-        mode_value = self.mode_select.currentText()  # Get selected text from combo box
-        slider_value = self.slider.value()  # Get current value from the slider
+        mode_value = self.mode_select.currentText()
+        slider_value = self.slider.value()
 
-        # Format the retrieved data into a string
         data_string = f"UTC: {utc_value}\nMOC: {moc_value}\nMET: {met_value}\nSLT: {slt_value}\nMJD: {mjd_value}\nMode: {mode_value}\nSlider Value: {slider_value}\n"
-
-        # Display the data in the text area
         self.data_display.setText(data_string)
 
-
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-
+    app = QApplication(sys.argv)  # 'sys' is now defined since we've imported it
     window = MainWindow()
     window.show()
-
     sys.exit(app.exec())
