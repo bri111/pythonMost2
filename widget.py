@@ -1,14 +1,23 @@
-import sys  # Add this line to import the sys module
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QSlider, QComboBox, QTextEdit
-from PySide6.QtCore import Qt
+import sys
+import pandas as pd
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QFileDialog
 
-# test smiley face
-class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
+class Widget(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
 
-        self.setWindowTitle("Toolbar Alignment")
-        self.setGeometry(100, 100, 800, 600)
+        # Load the UI file
+        uic.loadUi("form.ui", self)
+
+        # Connect the button to a function
+        self.pushButton.clicked.connect(self.load_file)
+
+        # Example of accessing widgets
+        self.logEntryButton.clicked.connect(self.log_entry_action)
+        self.logOutButton.clicked.connect(self.log_out_action)
+        self.comboBox.currentIndexChanged.connect(self.combo_box_changed)
+        self.horizontalSlider.valueChanged.connect(self.slider_changed)
 
         # Apply dark background and widget styles
         self.setStyleSheet("""
@@ -57,98 +66,30 @@ class MainWindow(QWidget):
     """)
 
 
-        # Main Layout
-        main_layout = QVBoxLayout()
+    # Define functions to handle button clicks
+    def load_file(self):
+        file_dialog = QFileDialog()
+        file_path, _ = file_dialog.getOpenFileName(self, "Open File", "", "Excel Files (*.xlsx);;All Files (*)")
 
-        # Toolbar Layout
-        toolbar_layout = QHBoxLayout()
+        if file_path:
+            df = pd.read_excel(file_path)
+            print(df)  # This will print the DataFrame, replace this with code to display in a QTableWidget if needed
 
-        # Add label and input for each column
-        utc_label = QLabel("UTC")
-        self.utc_input = QLineEdit()
-        toolbar_layout.addWidget(utc_label)
-        toolbar_layout.addWidget(self.utc_input)
+    def log_entry_action(self):
+        print("Log Entry Button Clicked")
 
-        moc_label = QLabel("MOC")
-        self.moc_input = QLineEdit()
-        toolbar_layout.addWidget(moc_label)
-        toolbar_layout.addWidget(self.moc_input)
+    def log_out_action(self):
+        print("Log Out Button Clicked")
 
-        met_label = QLabel("MET")
-        self.met_input = QLineEdit("0")
-        toolbar_layout.addWidget(met_label)
-        toolbar_layout.addWidget(self.met_input)
+    def combo_box_changed(self, index):
+        selected_option = self.comboBox.currentText()
+        print(f"ComboBox changed to: {selected_option}")
 
-        slt_label = QLabel("SLT")
-        self.slt_input = QLineEdit("0")
-        toolbar_layout.addWidget(slt_label)
-        toolbar_layout.addWidget(self.slt_input)
-
-        mjd_label = QLabel("MJD")
-        self.mjd_input = QLineEdit("0")
-        toolbar_layout.addWidget(mjd_label)
-        toolbar_layout.addWidget(self.mjd_input)
-
-        mode_label = QLabel("Mode")
-        self.mode_select = QComboBox()
-        self.mode_select.addItems(["Choose", "Option 1", "Option 2"])
-        toolbar_layout.addWidget(mode_label)
-        toolbar_layout.addWidget(self.mode_select)
-
-        # Buttons
-        log_review_btn = QPushButton("Log Review")
-        log_review_btn.clicked.connect(self.get_data)
-        toolbar_layout.addWidget(log_review_btn)
-
-        log_entry_btn = QPushButton("Log Entry")
-        log_entry_btn.clicked.connect(lambda: self.data_display.append("Log Entry clicked!"))
-        toolbar_layout.addWidget(log_entry_btn)
-
-        log_in_btn = QPushButton("Log In")
-        log_in_btn.clicked.connect(lambda: self.data_display.append("Log In clicked!"))
-        toolbar_layout.addWidget(log_in_btn)
-
-        log_out_btn = QPushButton("Log Out")
-        log_out_btn.clicked.connect(lambda: self.data_display.append("Log Out clicked!"))
-        toolbar_layout.addWidget(log_out_btn)
-
-        bg_monitor_btn = QPushButton("B/G Monitor")
-        bg_monitor_btn.clicked.connect(lambda: self.data_display.append("B/G Monitor clicked!"))
-        toolbar_layout.addWidget(bg_monitor_btn)
-
-        main_layout.addLayout(toolbar_layout)
-
-        # Slider example
-        slider_layout = QVBoxLayout()
-        self.slider = QSlider(Qt.Horizontal)
-        self.slider.setRange(0, 100)
-        slider_layout.addWidget(QLabel("Select a value using the slider:"))
-        slider_layout.addWidget(self.slider)
-
-        main_layout.addLayout(slider_layout)
-
-        # Add a text area to display the retrieved data
-        self.data_display = QTextEdit()
-        self.data_display.setReadOnly(True)
-        main_layout.addWidget(self.data_display)
-
-        # Set the main layout
-        self.setLayout(main_layout)
-
-    def get_data(self):
-        utc_value = self.utc_input.text()
-        moc_value = self.moc_input.text()
-        met_value = self.met_input.text()
-        slt_value = self.slt_input.text()
-        mjd_value = self.mjd_input.text()
-        mode_value = self.mode_select.currentText()
-        slider_value = self.slider.value()
-
-        data_string = f"UTC: {utc_value}\nMOC: {moc_value}\nMET: {met_value}\nSLT: {slt_value}\nMJD: {mjd_value}\nMode: {mode_value}\nSlider Value: {slider_value}\n"
-        self.data_display.setText(data_string)
+    def slider_changed(self, value):
+        print(f"Slider value changed to: {value}")
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)  # 'sys' is now defined since we've imported it
-    window = MainWindow()
-    window.show()
+    app = QApplication(sys.argv)
+    widget = Widget()
+    widget.show()
     sys.exit(app.exec())
