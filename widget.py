@@ -3,6 +3,9 @@ import pandas as pd
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QWidget, QTableWidgetItem, QFileDialog
 
+# test
+ # you are cool
+#test
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -17,12 +20,11 @@ class Widget(QWidget):
         self.logEntryButton.clicked.connect(self.log_entry_action)
         self.logOutButton.clicked.connect(self.log_out_action)
         self.comboBox.currentIndexChanged.connect(self.combo_box_changed)
-        self.horizontalSlider.valueChanged.connect(self.slider_changed)
 
         # Apply dark background and widget styles
         self.setStyleSheet("""
         QWidget {
-            background-color: #2E2E2E; /* Dark grey */
+            background-color: #bd9797; /* Dark grey 2E2E2E /
             color: white; /* White text */
         }
         QLabel {

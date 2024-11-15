@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
-    QPushButton, QSizePolicy, QSlider, QTextEdit,
-    QWidget)
+    QPushButton, QScrollArea, QSizePolicy, QSlider,
+    QTextEdit, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -68,7 +68,7 @@ class Ui_Widget(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(610, 10, 103, 32))
+        self.comboBox.setGeometry(QRect(590, 10, 103, 32))
         self.label_4 = QLabel(self.frame_2)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(340, 10, 31, 31))
@@ -97,7 +97,7 @@ class Ui_Widget(object):
         self.textEdit_4.setSizePolicy(sizePolicy1)
         self.label_6 = QLabel(self.frame_2)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(560, 10, 41, 31))
+        self.label_6.setGeometry(QRect(540, 10, 41, 31))
         self.label_6.setFont(font)
         self.frame = QFrame(self.frame_2)
         self.frame.setObjectName(u"frame")
@@ -128,6 +128,14 @@ class Ui_Widget(object):
         self.horizontalSlider.setObjectName(u"horizontalSlider")
         self.horizontalSlider.setGeometry(QRect(570, 60, 711, 25))
         self.horizontalSlider.setOrientation(Qt.Horizontal)
+        self.scrollArea = QScrollArea(Widget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setGeometry(QRect(40, 100, 361, 291))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 359, 289))
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         self.retranslateUi(Widget)
 
