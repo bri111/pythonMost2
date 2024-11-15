@@ -24,7 +24,7 @@ class Widget(QWidget):
         # Apply dark background and widget styles
         self.setStyleSheet("""
         QWidget {
-            background-color: #bd9797; /* Dark grey 2E2E2E /
+            background-color: #2E2E2E; /* Dark grey test color */
             color: white; /* White text */
         }
         QLabel {

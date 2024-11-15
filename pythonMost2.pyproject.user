@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 14.0.2, 2024-11-15T09:34:18. -->
+<!-- Written by QtCreator 14.0.2, 2024-11-15T09:44:31. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -181,7 +181,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">widget.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/brizz/Documents/Code Projects/pythonMost2/widget.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/brizz/Documents/Code Projects/pythonMost2/widget.py</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\brizz\Documents\Code Projects\pythonMost2\widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
