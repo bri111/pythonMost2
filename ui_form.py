@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -36,8 +36,8 @@ class Ui_Widget(object):
         self.frame_2 = QFrame(Widget)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setGeometry(QRect(0, 0, 1161, 51))
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.label = QLabel(self.frame_2)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(10, 10, 41, 31))
@@ -102,8 +102,8 @@ class Ui_Widget(object):
         self.frame = QFrame(self.frame_2)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(740, 10, 371, 31))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.logReviewButton = QPushButton(self.frame)
         self.logReviewButton.setObjectName(u"logReviewButton")
         self.logReviewButton.setGeometry(QRect(0, 0, 81, 32))
@@ -127,7 +127,7 @@ class Ui_Widget(object):
         self.horizontalSlider = QSlider(Widget)
         self.horizontalSlider.setObjectName(u"horizontalSlider")
         self.horizontalSlider.setGeometry(QRect(450, 60, 831, 25))
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
+        self.horizontalSlider.setOrientation(Qt.Orientation.Horizontal)
         self.scrollArea = QScrollArea(Widget)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setGeometry(QRect(10, 60, 421, 731))
@@ -150,16 +150,16 @@ class Ui_Widget(object):
         self.frame_3 = QFrame(Widget)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setGeometry(QRect(440, 90, 421, 701))
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.label_8 = QLabel(self.frame_3)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(170, 50, 51, 21))
         self.frame_4 = QFrame(Widget)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setGeometry(QRect(870, 90, 421, 701))
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
 
         self.retranslateUi(Widget)
 
